@@ -37,9 +37,13 @@
   nav .links a:hover { color:var(--volt); }
   .lang-btn { background:none; border:1px solid var(--volt); color:var(--volt); padding:4px 14px; border-radius:3px; cursor:pointer; font-weight:bold; margin-left:1.4rem; font-size:.8rem; font-family:inherit; }
 
-  /* HERO — giant kinetic type over Ken Burns image */
+  /* HERO — video banner (falls back to hero.jpg automatically) */
   .hero { position:relative; height:88vh; overflow:hidden; display:flex; align-items:center; }
-  .hero img.bg { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.5; animation:kenburns 26s ease-in-out infinite alternate; }
+  .hero video.bg, .hero img.fallback {
+    position:absolute; inset:0; width:100%; height:100%;
+    object-fit:cover; opacity:.5;
+  }
+  .hero img.fallback { animation:kenburns 26s ease-in-out infinite alternate; }
   @keyframes kenburns { from { transform:scale(1); } to { transform:scale(1.14); } }
   .hero-content { position:relative; padding:0 6%; max-width:900px; }
   .hero h1 { font-size:clamp(3rem,10vw,7.5rem); font-weight:900; line-height:.95; text-transform:uppercase; letter-spacing:-2px; }
@@ -51,7 +55,6 @@
   .btn-volt { display:inline-block; background:var(--volt); color:var(--coal); font-weight:900; text-transform:uppercase; text-decoration:none; padding:1rem 2.4rem; border-radius:4px; font-size:.95rem; letter-spacing:1px; transition:transform .2s; }
   .btn-volt:hover { transform:translateY(-3px); }
 
-  /* MARQUEE WORD STRIP */
   .word-strip { overflow:hidden; background:var(--volt); padding:.8rem 0; }
   .word-track { display:flex; width:max-content; animation:scrollX 20s linear infinite; white-space:nowrap; }
   @keyframes scrollX { from { transform:translateX(0); } to { transform:translateX(-50%); } }
@@ -61,7 +64,6 @@
   .kicker { color:var(--volt); font-weight:900; text-transform:uppercase; letter-spacing:3px; font-size:.8rem; margin-bottom:.6rem; }
   h2 { font-size:clamp(1.9rem,4vw,2.8rem); font-weight:900; text-transform:uppercase; line-height:1.1; margin-bottom:2.5rem; }
 
-  /* STATS with live counters */
   .stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1.5rem; margin-bottom:5.5rem; }
   .stat { background:var(--panel); border-left:4px solid var(--volt); border-radius:6px; padding:2rem; }
   .stat .num { font-size:3rem; font-weight:900; color:var(--volt); line-height:1; }
@@ -91,7 +93,7 @@
   body.lang-fr .en { display:none; }
   body.lang-fr .fr { display:block; }
   @media (prefers-reduced-motion:reduce) {
-    .hero img.bg, .word-track, .hero h1 .line span { animation:none; }
+    .word-track, .hero h1 .line span { animation:none; }
     .hero h1 .line span { transform:translateX(0); }
   }
 </style>
@@ -109,14 +111,17 @@
 </nav>
 
 <div class="hero">
-  <img class="bg" src="hero.jpg" alt="Athlete swinging a kettlebell in a dark industrial Montréal strength gym with chalk dust in the air">
+  <video class="bg" autoplay muted loop playsinline preload="metadata" poster="hero.jpg">
+    <source src="hero-video.mp4" type="video/mp4">
+  </video>
+  <img class="fallback" src="hero.jpg" alt="" aria-hidden="true" style="display:none;">
   <div class="hero-content">
     <h1>
       <span class="line"><span><span class="en">TRAIN</span><span class="fr">ENTRAÎNE</span></span></span>
       <span class="line"><span><span class="en">HARDER.</span><span class="fr">PLUS FORT.</span></span></span>
     </h1>
     <p><span class="en">Real coaching. Iron discipline. Zero ego. Montréal's serious strength gym in Little Italy.</span><span class="fr">Du vrai coaching. Discipline de fer. Zéro ego. Le gym sérieux de Montréal dans la Petite-Patrie.</span></p>
-    <a href="#join" class="btn-volt"><span class="en">Book Free Session</span><span class="fr">Réserve ta séance gratuite</span></a>
+    <a href="#join" class="btn-volt"><span class="en">Book Free Session</span><span class="fr">Réserve ta séance gratuite</span></span></a>
   </div>
 </div>
 
@@ -224,6 +229,16 @@ function toggleLang() {
   var b = document.body, btn = document.getElementById('langBtn');
   if (b.classList.contains('lang-en')) { b.className='lang-fr'; btn.textContent='EN'; }
   else { b.className='lang-en'; btn.textContent='FR'; }
+}
+
+// Show static image fallback if video can't play
+var video = document.querySelector('.hero video.bg');
+var fallbackImg = document.querySelector('.hero img.fallback');
+if (video) {
+  video.addEventListener('error', function() {
+    video.style.display = 'none';
+    if (fallbackImg) fallbackImg.style.display = 'block';
+  });
 }
 
 // Live stat counters — animate when scrolled into view
