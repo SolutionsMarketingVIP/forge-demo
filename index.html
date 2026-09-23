@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Strength & Conditioning Gym in Montréal — FORGE Athletics</title>
+<meta name="description" content="Serious strength training in Little Italy, Montréal. Coaching, small-group classes, open gym. First session free — book today.">
+<meta property="og:title" content="FORGE Athletics — Strength Gym, Montréal">
+<meta property="og:image" content="hero.jpg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ExerciseGym",
+  "name": "FORGE Athletics",
+  "image": "hero.jpg",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "6870 Rue Saint-Zotique",
+    "addressLocality": "Montréal",
+    "addressRegion": "QC",
+    "addressCountry": "CA"
+  },
+  "telephone": "+1-514-555-0166",
+  "priceRange": "$$",
+  "openingHours": "Mo-Fr 06:00-22:00 Sa-Su 08:00-18:00"
+}
+</script>
+<style>
+  :root { --coal:#111214; --panel:#1a1c1f; --volt:#e8ff2b; --grey:#9a9a9a; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { font-family:Arial,Helvetica,sans-serif; background:var(--coal); color:#e8e8e8; line-height:1.6; }
+
+  nav { display:flex; justify-content:space-between; align-items:center; padding:1rem 5%; position:sticky; top:0; z-index:100; background:rgba(17,18,20,.9); backdrop-filter:blur(8px); }
+  .logo { color:var(--volt); font-weight:900; font-size:1.4rem; letter-spacing:2px; text-decoration:none; }
+  nav .links a { color:var(--grey); text-decoration:none; margin-left:1.4rem; font-size:.9rem; text-transform:uppercase; font-weight:bold; }
+  nav .links a:hover { color:var(--volt); }
+  .lang-btn { background:none; border:1px solid var(--volt); color:var(--volt); padding:4px 14px; border-radius:3px; cursor:pointer; font-weight:bold; margin-left:1.4rem; font-size:.8rem; font-family:inherit; }
+
+  /* HERO — giant kinetic type over Ken Burns image */
+  .hero { position:relative; height:88vh; overflow:hidden; display:flex; align-items:center; }
+  .hero img.bg { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.5; animation:kenburns 26s ease-in-out infinite alternate; }
+  @keyframes kenburns { from { transform:scale(1); } to { transform:scale(1.14); } }
+  .hero-content { position:relative; padding:0 6%; max-width:900px; }
+  .hero h1 { font-size:clamp(3rem,10vw,7.5rem); font-weight:900; line-height:.95; text-transform:uppercase; letter-spacing:-2px; }
+  .hero h1 .line { display:block; overflow:hidden; }
+  .hero h1 .line span { display:block; transform:translateX(-100%); animation:slideIn .8s cubic-bezier(.2,.8,.2,1) forwards; }
+  .hero h1 .line:nth-child(2) span { animation-delay:.18s; color:var(--volt); }
+  @keyframes slideIn { to { transform:translateX(0); } }
+  .hero p { margin:1.4rem 0 2rem; color:#c9c9c9; max-width:480px; font-size:1.05rem; }
+  .btn-volt { display:inline-block; background:var(--volt); color:var(--coal); font-weight:900; text-transform:uppercase; text-decoration:none; padding:1rem 2.4rem; border-radius:4px; font-size:.95rem; letter-spacing:1px; transition:transform .2s; }
+  .btn-volt:hover { transform:translateY(-3px); }
+
+  /* MARQUEE WORD STRIP */
+  .word-strip { overflow:hidden; background:var(--volt); padding:.8rem 0; }
+  .word-track { display:flex; width:max-content; animation:scrollX 20s linear infinite; white-space:nowrap; }
+  @keyframes scrollX { from { transform:translateX(0); } to { transform:translateX(-50%); } }
+  .word-track span { color:var(--coal); font-weight:900; text-transform:uppercase; font-size:1rem; letter-spacing:2px; padding:0 1.4rem; }
+
+  section { padding:5.5rem 6%; max-width:1150px; margin:0 auto; }
+  .kicker { color:var(--volt); font-weight:900; text-transform:uppercase; letter-spacing:3px; font-size:.8rem; margin-bottom:.6rem; }
+  h2 { font-size:clamp(1.9rem,4vw,2.8rem); font-weight:900; text-transform:uppercase; line-height:1.1; margin-bottom:2.5rem; }
+
+  /* STATS with live counters */
+  .stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1.5rem; margin-bottom:5.5rem; }
+  .stat { background:var(--panel); border-left:4px solid var(--volt); border-radius:6px; padding:2rem; }
+  .stat .num { font-size:3rem; font-weight:900; color:var(--volt); line-height:1; }
+  .stat .lbl { color:var(--grey); text-transform:uppercase; font-size:.8rem; letter-spacing:1px; margin-top:.5rem; }
+
+  .programs { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.4rem; }
+  .prog { background:var(--panel); border-radius:8px; overflow:hidden; transition:transform .25s; }
+  .prog:hover { transform:translateY(-6px); }
+  .prog img { width:100%; height:200px; object-fit:cover; }
+  .prog .body { padding:1.4rem; }
+  .prog h3 { color:#fff; text-transform:uppercase; margin-bottom:.4rem; }
+  .prog p { color:var(--grey); font-size:.9rem; margin-bottom:1rem; }
+  .tag { display:inline-block; background:rgba(232,255,43,.12); color:var(--volt); font-size:.72rem; font-weight:bold; text-transform:uppercase; padding:.25rem .8rem; border-radius:3px; }
+
+  .quote-box { background:var(--panel); border-radius:8px; padding:3rem; text-align:center; }
+  .quote-box blockquote { font-size:1.4rem; font-weight:bold; line-height:1.5; }
+  .quote-box cite { color:var(--volt); font-style:normal; text-transform:uppercase; font-size:.85rem; letter-spacing:2px; display:block; margin-top:1rem; }
+
+  .join { text-align:center; background:linear-gradient(135deg,var(--panel),#222); border-radius:12px; padding:4rem 2rem; }
+  .join h2 { margin-bottom:.6rem; }
+  .join p { color:var(--grey); margin-bottom:2rem; }
+
+  footer { text-align:center; padding:2.5rem; color:#666; font-size:.85rem; border-top:1px solid #222; }
+  footer .fn { color:var(--volt); font-weight:900; letter-spacing:3px; margin-bottom:.4rem; }
+
+  .fr { display:none; }
+  body.lang-fr .en { display:none; }
+  body.lang-fr .fr { display:block; }
+  @media (prefers-reduced-motion:reduce) {
+    .hero img.bg, .word-track, .hero h1 .line span { animation:none; }
+    .hero h1 .line span { transform:translateX(0); }
+  }
+</style>
+</head>
+<body class="lang-en">
+
+<nav>
+  <a href="#" class="logo">FORGE⚡</a>
+  <div class="links">
+    <a href="#programs"><span class="en">Programs</span><span class="fr">Programmes</span></a>
+    <a href="#results"><span class="en">Results</span><span class="fr">Résultats</span></a>
+    <a href="#join"><span class="en">Join</span><span class="fr">Joindre</span></a>
+    <button class="lang-btn" onclick="toggleLang()" id="langBtn">FR</button>
+  </div>
+</nav>
+
+<div class="hero">
+  <img class="bg" src="hero.jpg" alt="Athlete swinging a kettlebell in a dark industrial Montréal strength gym with chalk dust in the air">
+  <div class="hero-content">
+    <h1>
+      <span class="line"><span><span class="en">TRAIN</span><span class="fr">ENTRAÎNE</span></span></span>
+      <span class="line"><span><span class="en">HARDER.</span><span class="fr">PLUS FORT.</span></span></span>
+    </h1>
+    <p><span class="en">Real coaching. Iron discipline. Zero ego. Montréal's serious strength gym in Little Italy.</span><span class="fr">Du vrai coaching. Discipline de fer. Zéro ego. Le gym sérieux de Montréal dans la Petite-Patrie.</span></p>
+    <a href="#join" class="btn-volt"><span class="en">Book Free Session</span><span class="fr">Réserve ta séance gratuite</span></a>
+  </div>
+</div>
+
+<div class="word-strip">
+  <div class="word-track">
+    <span>⚡ STRENGTH</span><span>⚡ CONDITIONING</span><span>⚡ OLYMPIC LIFTING</span><span>⚡ SMALL GROUP</span><span>⚡ 1-ON-1 COACHING</span><span>⚡ STRENGTH</span><span>⚡ CONDITIONING</span><span>⚡ OLYMPIC LIFTING</span><span>⚡ SMALL GROUP</span><span>⚡ 1-ON-1 COACHING</span>
+  </div>
+</div>
+
+<section id="results">
+  <div class="kicker">
+    <span class="en">The Numbers</span>
+    <span class="fr">Les Chiffres</span>
+  </div>
+  <h2><span class="en">We Count Everything.</span><span class="fr">On Compte Tout.</span></h2>
+  <div class="stats">
+    <div class="stat"><div class="num" data-count="487">0</div><div class="lbl">
+      <span class="en">Active Members</span><span class="fr">Membres actifs</span></div></div>
+    <div class="stat"><div class="num" data-count="12">0</div><div class="lbl">
+      <span class="en">Certified Coaches</span><span class="fr">Coachs certifiés</span></div></div>
+    <div class="stat"><div class="num" data-count="2400">0</div><div class="lbl">
+      <span class="en">KG Total Club PR</span><span class="fr">KG Records totaux</span></div></div>
+    <div class="stat"><div class="num" data-count="6">0</div><div class="lbl">
+      <span class="en">AM Doors Open</span><span class="fr">Ouverture 6 h AM</span></div></div>
+  </div>
+</section>
+
+<section id="programs">
+  <div class="kicker">
+    <span class="en">Training Programs</span>
+    <span class="fr">Programmes d'Entraînement</span>
+  </div>
+  <h2><span class="en">Pick Your Battle.</span><span class="fr">Choisis Ton Combat.</span></h2>
+  <div class="programs">
+    <div class="prog">
+      <img src="gym-1.jpg" alt="Barbell with chalked hands preparing a heavy lift at FORGE Athletics Montréal">
+      <div class="body">
+        <h3>
+          <span class="en">Barbell Club</span>
+          <span class="fr">Club Barbel</span>
+        </h3>
+        <p><span class="en">Squat, bench, deadlift — periodized programming with coaching eyes on every rep.</span><span class="fr">Squat, développé, soulevé — programmation périodisée avec supervision de chaque répétition.</span></p>
+        <span class="tag">
+          <span class="en">Strength</span>
+          <span class="fr">Force</span>
+        </span>
+      </div>
+    </div>
+    <div class="prog">
+      <img src="gym-2.jpg" alt="Boxer striking a heavy bag silhouetted by a beam of light in the training studio">
+      <div class="body">
+        <h3>
+          <span class="en">Combat Conditioning</span>
+          <span class="fr">Conditionnement Combat</span>
+        </h3>
+        <p><span class="en">Bag work, sleds, and savage conditioning circuits for fighters and the fighter-curious.</span><span class="fr">Sac, traîneaux et circuits de conditionnement sauvages pour combattants et curieux.</span></p>
+        <span class="tag">
+          <span class="en">Intensity</span>
+          <span class="fr">Intensité</span>
+        </span>
+      </div>
+    </div>
+    <div class="prog">
+      <img src="hero.jpg" alt="Kettlebell training session with dramatic lighting at the strength gym">
+      <div class="body">
+        <h3>
+          <span class="en">Small Group Strength</span>
+          <span class="fr">Force Petit Groupe</span>
+        </h3>
+        <p><span class="en">Max 8 athletes per coach. Personal-training attention at a fraction of the price.</span><span class="fr">Max 8 athlètes par coach. L'attention du coaching privé à une fraction du prix.</span></p>
+        <span class="tag">
+          <span class="en">Coaching</span>
+          <span class="fr">Coaching</span>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="quote-box">
+    <blockquote>
+      <span class="en">"I came for a free session in January. I deadlift double my bodyweight now. This place rebuilds people."</span>
+      <span class="fr">« Je suis venu pour une séance gratuite en janvier. Je soulève le double de mon poids maintenant. Cet endroit reconstruit les gens. »</span>
+    </blockquote>
+    <cite>— Caroline D., <span class="en">member since 2024</span><span class="fr">membre depuis 2024</span></cite>
+  </div>
+</section>
+
+<section id="join">
+  <div class="join">
+    <h2><span class="en">First Session On Us.</span><span class="fr">Première Séance Gratuite.</span></h2>
+    <p><span class="en">6870 Rue Saint-Zotique, Montréal · (514) 555-0166 · Mon–Fri 6AM–10PM, Sat–Sun 8AM–6PM</span><span class="fr">6870, rue Saint-Zotique, Montréal · (514) 555-0166 · Lun–Ven 6 h–22 h, Sam–Dim 8 h–18 h</span></p>
+    <a href="mailto:join@forgeathletics.ca" class="btn-volt"><span class="en">Claim Your Free Session</span><span class="fr">Réserve ta séance gratuite</span></a>
+  </div>
+</section>
+
+<footer>
+  <p class="fn">FORGE⚡ATHLETICS</p>
+  <p><span class="en">© 2026 — Concept demo by Solutions Marketing VIP · Plan D: Kinetic Bold</span><span class="fr">© 2026 — Démo conceptuelle par Solutions Marketing VIP · Plan D : Cinétique Audacieux</span></p>
+</footer>
+
+<script>
+function toggleLang() {
+  var b = document.body, btn = document.getElementById('langBtn');
+  if (b.classList.contains('lang-en')) { b.className='lang-fr'; btn.textContent='EN'; }
+  else { b.className='lang-en'; btn.textContent='FR'; }
+}
+
+// Live stat counters — animate when scrolled into view
+var counted = false;
+window.addEventListener('scroll', function() {
+  if (counted) return;
+  var stats = document.querySelector('.stats');
+  if (!stats) return;
+  var pos = stats.getBoundingClientRect();
+  if (pos.top < window.innerHeight && pos.bottom >= 0) {
+    counted = true;
+    document.querySelectorAll('.num').forEach(function(el) {
+      var target = parseInt(el.getAttribute('data-count'), 10);
+      var current = 0, step = Math.max(1, Math.ceil(target / 60));
+      var t = setInterval(function() {
+        current += step;
+        if (current >= target) { current = target; clearInterval(t); }
+        el.textContent = current.toLocaleString('fr-CA');
+      }, 20);
+    });
+  }
+}, { passive: true });
+</script>
+</body>
+</html>
